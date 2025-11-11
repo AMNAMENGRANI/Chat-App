@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chat-App</title>
+<link rel="stylesheet" href="style.css">
+<style>
+ 
+.chat-container {
+  width: 480px;
+  height: 580px;
+  background: linear-gradient(135deg, #FFD766, #FFCC70, #FFB84C);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-container h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.message-box {
+  flex: 1;
+  overflow-y: auto;
+  background: #FFF7E0;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Message bubble */
+.message {
+  background: #FFB84C;
+  color: #4A3F2F;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin: 8px 0;
+  position: relative;
+  transition: background 0.3s;
+  word-wrap: break-word;
+}
+
+.message:hover {
+  background: #F7A531;
+}
+
+.meta {
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: #5c5242;
+}
+
+.text {
+  font-size: 14px;
+}
+
+/* Edit/Delete buttons */
+.actions {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 5px;
+}
+
+.actions button {
+  border: none;
+  background: transparent;
+  color: #4A3F2F;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.actions button:hover {
+  color: #f27e0a;
+}
+
+/* Inputs and send button */
+input[type="text"] {
+  border: 1px solid #FFB84C;
+  border-radius: 25px;
+  padding: 10px 14px;
+  margin-top: 10px;
+  outline: none;
+  transition: box-shadow 0.3s;
+  font-size: 14px;
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 0 6px #F7A531;
+}
+
+button {
+  background: #FFB84C;
+  color: #4A3F2F;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 18px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #F79B30;
+}
+
+
+</style>
+</head>
+<body>
+<div class="chat-container">
+    <h2>Realtime chat</h2>
+    <div id="messages" class="message-box"></div>
+        <input type="text" id="message" placeholder="type a message">
+  <button onclick="sendMessage()">Send</button>
+</div>
+<script type="module" src="app.js"></script>
+
+
+
