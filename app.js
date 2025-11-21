@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
 import { getDatabase, ref, push, onChildAdded, remove, update } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
-import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,signOut } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCJPKLFhItBQJYtKAAaMxpdzoNmvfZv-dA",
@@ -16,13 +16,65 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const auth = getAuth(app);
-
+const provider = new GoogleAuthProvider();
 const messagesRef = ref(db, "messages");
+
+// signup
+
+  document.getElementById('signup')?.addEventListener('click' , ()=>{
+    const email = document.getElementById('email').value;
+    const password =document.getElementById('password').value;
+
+    createUserWithEmailAndPassword(auth , email , password)
+    .then(()=>{
+      alert('SignUp Succesfull!');
+      window.location.href = 'user.html';
+    })
+    .catch((error)=>{
+      alert(error.message)
+    })
+  })
+  //  login
+
+  document.getElementById('login')?.addEventListener('click' , ()=>{
+    const email = document.getElementById('email').value;
+    const password =document.getElementById('password').value;
+
+    signInWithEmailAndPassword(auth , email , password)
+    .then(()=>{
+      alert('Login Succesfull!');
+      window.location.href = 'user.html';
+    })
+    .catch((error)=>{
+      alert(error.message)
+    })
+  })
+  //  signin with popup
+  document.getElementById('google-btn')?.addEventListener('click' , ()=>{
+    signInWithPopup(auth , provider)
+     .then(()=>{
+      alert('Login Successfully');
+      window.location.href = 'user.html';
+     })
+     .catch((error)=>{
+       alert(error.message)
+     })
+  })
+  
 
 // 🟡 Send message to Firebase
 window.sendMessage = function () {
+  const user = auth.currentUser;
+
+  if (!user) {
+    alert("Please login first!");
+    return;
+  }
+
+  const username = user.email || "Unknown User";  
   const message = document.getElementById("message").value.trim();
-  if (username === "" || message === "") return;
+
+  if (message === "") return;
 
   push(messagesRef, {
     name: username,
