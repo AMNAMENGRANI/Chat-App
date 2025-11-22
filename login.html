@@ -1,62 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-         * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Username Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  body {
-    height: 100vh;
-    background: linear-gradient(135deg, #fff8e1, #ffe082);
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #fff8e1, #ffe082);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-  .login {
-    position: relative;
-    background: #fff;
-    border-radius: 25px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    padding: 50px 40px;
-    width: 340px;
-    text-align: center;
-    z-index: 2;
-  }
-  h1 {
-    font-size: 1.5rem;
-    color: #444;
-    margin-bottom: 10px;
-  }
-   
-  button {
-  border: none;
-  border-radius: 30px;
-  padding: 12px 28px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
+    .login {
+      position: relative;
+      background: #fff;
+      border-radius: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      padding: 50px 40px;
+      width: 340px;
+      text-align: center;
+      z-index: 2;
+    }
 
-.btn{
-  background: #FFB84C;
-  color: #4A3F2F;
-  box-shadow: 0 4px 10px rgba(255, 184, 76, 0.4);
-}
-.btn:hover {
-  background: #F79B30;
-  box-shadow: 0 6px 14px rgba(247, 155, 48, 0.5);
-}
- input {
+    h1 {
+      font-size: 1.5rem;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    button {
+      border: none;
+      border-radius: 30px;
+      padding: 12px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn{
+      background: #FFB84C;
+      color: #4A3F2F;
+      box-shadow: 0 4px 10px rgba(255, 184, 76, 0.4);
+    }
+    .btn:hover {
+      background: #F79B30;
+      box-shadow: 0 6px 14px rgba(247, 155, 48, 0.5);
+    }
+
+    input {
       width: 100%;
       padding: 12px 14px;
       margin-bottom: 15px;
@@ -66,21 +68,32 @@
       transition: border-color 0.3s;
     }
 
-     input:focus {
+    input:focus {
       border-color: #6c63ff;
       outline: none;
     }
-
-    </style>
+  </style>
 </head>
 
 <body>
 
-    <div class="login">
-        <h1>Choose a UserName</h1>
-        <input type="text" placeholder="Enter your name">
-        <button class="btn" onclick="location.href= 'chat.html'">Ok</button>
-    </div>
-    <script type="module" src="app.js"></script>
+  <div class="login">
+    <h1>Choose a Username</h1>
+    <input type="text" id="username" placeholder="Enter your name">
+    <button class="btn" onclick="goToChat()">Ok</button>
+  </div>
+
+  <script>
+    function goToChat() {
+      const name = document.getElementById('username').value.trim();
+      if (!name) {
+        alert('Please enter a name');
+        return;
+      }
+      // store name in localStorage just for fun/use
+      localStorage.setItem('chat-username', name);
+      location.href = 'chat.html';
+    }
+  </script>
 </body>
 </html>
