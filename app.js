@@ -10,14 +10,15 @@ import {
   signOut 
 } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyC6g0R3rtaY4vy1iP_RWc6kYIBVfQ5LYLE",
-    authDomain: "github-auth-32352.firebaseapp.com",
-    projectId: "github-auth-32352",
-    storageBucket: "github-auth-32352.firebasestorage.app",
-    messagingSenderId: "128672157812",
-    appId: "1:128672157812:web:bcd786bc278fe79a2e8121",
-    measurementId: "G-C1P2468N25"
+ const firebaseConfig = {
+    apiKey: "AIzaSyC0TXDP_NC9Vq9PZJ8yzOMwdpicKZN9UuA",
+    authDomain: "sign-in-project-e9067.firebaseapp.com",
+    databaseURL: "https://sign-in-project-e9067-default-rtdb.firebaseio.com",
+    projectId: "sign-in-project-e9067",
+    storageBucket: "sign-in-project-e9067.firebasestorage.app",
+    messagingSenderId: "908227855842",
+    appId: "1:908227855842:web:1c3c40a00aec01e81c25bb",
+    measurementId: "G-SJC4CS1G9C"
   };
 
 
@@ -173,3 +174,4 @@ document.getElementById("logout")?.addEventListener("click", () => {
       alert(error.message);
     });
 });
+
