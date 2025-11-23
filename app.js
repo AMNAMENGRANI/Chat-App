@@ -44,7 +44,7 @@ document.getElementById('signup')?.addEventListener('click', () => {
     .then((userCredential) => {
       console.log('SignUp success:', userCredential.user);
       alert('SignUp Successful!');
-      window.location.href = 'welcom.html';
+      window.location.href = 'wel.html';
     })
     .catch((error) => {
       console.error('SignUp error:', error.code, error.message);
@@ -66,7 +66,7 @@ document.getElementById('login')?.addEventListener('click', () => {
     .then((userCredential) => {
       console.log('Login success:', userCredential.user);
       alert('Login Successful!');
-      window.location.href = 'welcom.html';
+      window.location.href = 'wel.html';
     })
     .catch((error) => {
       console.error('Login error:', error.code, error.message);
@@ -80,7 +80,7 @@ document.getElementById('google-btn')?.addEventListener('click', () => {
     .then((result) => {
       console.log('Google login success:', result.user);
       alert('Login Successfully');
-      window.location.href = 'welcom.html';
+      window.location.href = 'wel.html';
     })
     .catch((error) => {
       console.error('Google login error:', error.code, error.message);
@@ -174,4 +174,5 @@ document.getElementById("logout")?.addEventListener("click", () => {
       alert(error.message);
     });
 });
+
 
